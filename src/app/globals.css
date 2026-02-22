@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-black text-primary antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-hover rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent/50;
+  }
+}
+
+@layer components {
+  .product-card {
+    @apply relative overflow-hidden rounded-lg bg-surface border border-border/50
+           transition-all duration-500 ease-out;
+  }
+
+  .product-card:hover {
+    @apply border-accent/30 shadow-lg shadow-accent/5 -translate-y-1;
+  }
+
+  .product-card:hover .product-image {
+    @apply scale-105;
+  }
+
+  .category-chip {
+    @apply px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em]
+           border border-border/50 rounded-full transition-all duration-300
+           cursor-pointer select-none;
+  }
+
+  .category-chip:hover {
+    @apply border-accent/50 text-accent;
+  }
+
+  .category-chip.active {
+    @apply bg-accent text-black border-accent;
+  }
+
+  .affiliate-btn {
+    @apply inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold
+           uppercase tracking-wider rounded-lg transition-all duration-300;
+  }
+
+  .affiliate-btn-lazada {
+    @apply bg-[#f57224] text-white hover:bg-[#e06520] hover:shadow-lg hover:shadow-[#f57224]/20;
+  }
+
+  .affiliate-btn-shopee {
+    @apply bg-[#ee4d2d] text-white hover:bg-[#d9452a] hover:shadow-lg hover:shadow-[#ee4d2d]/20;
+  }
+
+  .glass {
+    @apply bg-black/80 backdrop-blur-xl border-b border-border/50;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-amber-300 to-accent;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+}
